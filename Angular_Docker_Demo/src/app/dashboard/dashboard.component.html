@@ -1,0 +1,51 @@
+<!-- Label to display any error messages -->
+<label class="error-message">{{ errorMessage }}</label>
+<!-- Expansion panel to add new notes -->
+<div class="note-expansion-panel-container">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Take a note
+          </mat-panel-title>          
+        </mat-expansion-panel-header>
+        <!-- Form fields -->
+        <div class="note-form-container">
+            <mat-form-field>
+                <input [(ngModel)]="note.id"  matInput placeholder="ID" name="id" type="text" >
+            </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="note.noteTitle"  matInput placeholder="Title" name="title" type="text" >
+          </mat-form-field>
+          <mat-form-field>
+            <textarea [(ngModel)]="note.noteContent" matInput placeholder="Content" name="content" ></textarea>
+          </mat-form-field>        
+
+          <button mat-button (click)="addNote()">Done</button>
+            
+        </div>
+  
+  
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <!-- Display the notes fetching it from server -->
+
+    <section class="notes-list-container">
+            <mat-card class="note-card" *ngFor="let note of notesList">
+                <mat-card-header>
+                    <mat-card-title>{{ note.noteTitle}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    {{ note.noteContent}}
+                    <div class="note-edit-delete-icon-section">
+                    <mat-icon class="note-edit-icon" matTooltip="Edit Note" aria-hidden="false" aria-label="Example user verified icon" (click)="editNote(note)">edit</mat-icon>
+                    <mat-icon class="note-delete-icon"  matTooltip="Delete Note" aria-hidden="false" aria-label="Example user verified icon" (click)="deleteNote(note)">delete</mat-icon>
+    
+                    </div>
+                </mat-card-content>
+            </mat-card>
+    </section>
+
+

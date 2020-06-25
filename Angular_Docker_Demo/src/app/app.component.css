@@ -1,0 +1,10 @@
+.router-outlet-section{
+    width:80vw;
+    margin: 0 0 0 20vw;
+}
+
+@media(max-width: 575px){
+    .router-outlet-section{
+    width: 60vw;
+    }
+}

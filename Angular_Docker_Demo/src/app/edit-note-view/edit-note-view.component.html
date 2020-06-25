@@ -1,0 +1,15 @@
+<h3>Edit Note</h3>
+
+<div class="edit-note-form-container">
+        <mat-form-field>
+            <input [(ngModel)]="note.id"  matInput placeholder="ID" name="id" type="text" readonly>
+        </mat-form-field>
+      <mat-form-field>
+        <input [(ngModel)]="note.noteTitle"  matInput placeholder="Title" name="title" type="text" >
+      </mat-form-field>
+      <mat-form-field>
+        <textarea [(ngModel)]="note.noteContent" matInput placeholder="Content" name="content" ></textarea>
+      </mat-form-field>        
+
+      <button mat-button  (click)="editNote()">Done</button>
+</div>

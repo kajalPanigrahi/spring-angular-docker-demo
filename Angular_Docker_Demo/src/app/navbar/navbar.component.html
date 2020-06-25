@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">menu</mat-icon>
+        <span class="menu-title">Menu</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-nav-list>
+    </mat-nav-list>
+
+    
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-toolbar-header">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      
+        <img src="../../assets/images/notes1.png" alt="" srcset="" class="app-logo">
+        <span>Keep Note</span>
+
+        <section class="user-info-section">
+            <mat-icon class="category-icon cursor-pointer" aria-hidden="false" aria-label="Example user verified icon">view_list</mat-icon>
+            <div class="username-prefix-section" *ngIf="userLoggedIn">
+              <span class="username">{{username_first_letter | uppercase}}</span>
+            </div> 
+            <div  *ngIf="userNotLoggedIn" class="user-avatar-section">
+              <img src="../../assets/images/user_avatar.png" alt="" srcset="" class="user-avatar">
+            </div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon class="category-icon cursor-pointer" aria-hidden="false" aria-label="Example user verified icon">drag_indicator</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="signout()">
+                <mat-icon>sentiment_very_dissatisfied</mat-icon>
+                <span>Sign Out</span>
+              </button>
+             
+            </mat-menu>
+            
+        </section>
+      
+      
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

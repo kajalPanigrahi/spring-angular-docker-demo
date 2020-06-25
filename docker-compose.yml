@@ -1,0 +1,33 @@
+version: '2'
+services:
+  spring-backend:
+    image: springbackend-image:v1
+    build: Spring_Docker_Demo/
+    ports: 
+      - 8083:8083
+    networks: 
+      - springboot-angular-network
+    container_name: springbackend-container
+    depends_on:
+      - mongo
+  angular-frontend:
+    image: angularfrontend-image:v1
+    build: Angular_Docker_Demo/
+    ports:
+      - 8080:8080
+    container_name: angularfrontend-container
+    networks: 
+      - springboot-angular-network
+  
+  mongo:
+    image: mongo:3.4-xenial
+    ports:
+      - 27017:27017
+    container_name: mongo-container
+    networks: 
+      - springboot-angular-network
+
+networks:
+  springboot-angular-network:
+
+       

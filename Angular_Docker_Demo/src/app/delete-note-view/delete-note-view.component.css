@@ -1,0 +1,8 @@
+div.delete-note-button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.delete-button{
+    margin-left : 1em;
+}
